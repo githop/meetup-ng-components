@@ -16,5 +16,6 @@ export default () => {
 		update(task) {
 			this.task = task;
 		}
+
 	};
 };

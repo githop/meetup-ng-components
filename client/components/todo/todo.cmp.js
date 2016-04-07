@@ -13,7 +13,8 @@ export default {
 	bindings: {
 		todo: '<',
 		onComplete: '&',
-		onUpdate: '&'
+		onUpdate: '&',
+		onRemove: '&'
 	},
 	controller: TodoCtrl,
 	template: `

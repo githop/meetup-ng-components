@@ -21,6 +21,7 @@ gulp.task('serve', ['watch-html'], function() {
     var wpConfig = require('./webpack.dev.config');
     var wpCompiler = webpack(wpConfig);
     serve({
+        port: 8989,
         server: {
             baseDir: 'client'
         },

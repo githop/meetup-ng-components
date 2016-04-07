@@ -11,7 +11,8 @@ export default (TodoModel) => {
 
 	return {
 		fetch: fetch,
-		add: add
+		add: add,
+		remove: remove
 	};
 
 	function fetch() {
@@ -20,6 +21,16 @@ export default (TodoModel) => {
 
 	function add(todo) {
 		_todos.push(new TodoModel(todo));
+	}
+
+	function remove(todo) {
+		var ret = [];
+		for (let i of _todos) {
+			if (i !== todo) {
+				ret.push(i)
+			}
+		}
+		_todos = ret;
 	}
 
 }

@@ -16,8 +16,11 @@ class appRootCtrl {
     addTodo(todo) {
         this.todoSrv.add(todo);
     }
-}
 
+    remove(todo) {
+        this.todoSrv.remove(todo.rm);
+    }
+}
 
 export default {
     controller: appRootCtrl,
@@ -26,6 +29,6 @@ export default {
 
     <input ng-model="new.todo" type="text">
     <button ng-click="$ctrl.addTodo(new.todo)">add</button>
-    <gth-todos todos="$ctrl.todos()"></gth-todos>
+    <gth-todos todos="$ctrl.todos()" on-remove="$ctrl.remove(rm)"></gth-todos>
     `
 };
