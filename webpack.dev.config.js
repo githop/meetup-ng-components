@@ -15,7 +15,7 @@ config.entry = {
 config.output = {
     filename: '[name].bundle.js',
     publicPath: '/',
-    path: '/webpack-dist'
+    path: '/'
 };
 
 config.plugins = config.plugins.concat([
