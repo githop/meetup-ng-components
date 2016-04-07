@@ -19,9 +19,8 @@ export default {
 	controller: TodoCtrl,
 	template: `
 	<h4>{{$ctrl.todo.task}}</h4>
-	Completed? {{$ctrl.todo.done}}
-
-	<button ng-click="$ctrl.onComplete()">finish</button>
+	<label for="done">Completed?</label>
+	<input id="done" type="checkbox" ng-model="todo.done" ng-change="$ctrl.onComplete()"/>
 	<input ng-model="new.task" type="text" ng-change="$ctrl.update({task: new.task})"/>
 	`
 

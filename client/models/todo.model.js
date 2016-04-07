@@ -4,8 +4,9 @@
 
 export default () => {
 	return class TodoModel {
-		constructor(task, done = false) {
+		constructor(task, id, done = false) {
 			this.task = task;
+			this.id = id;
 			this.done = done;
 		}
 
