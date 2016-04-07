@@ -20,12 +20,12 @@ class appRootCtrl {
 
 
 export default {
+    controller: appRootCtrl,
     template: `
     <h3>{{$ctrl.welcome}}</h3>
 
     <input ng-model="new.todo" type="text">
     <button ng-click="$ctrl.addTodo(new.todo)">add</button>
     <gth-todos todos="$ctrl.todos()"></gth-todos>
-    `,
-    controller: appRootCtrl
+    `
 };

@@ -2,14 +2,10 @@
  * Created by githop on 4/6/16.
  */
 
-
-class TodosCtrl {
-	constructor() {
-		'ngInject';
-	}
-}
-
 export default {
+	bindings: {
+		todos: '<'
+	},
 	template: `
 	<h4>Todos list:</h4>
 
@@ -19,9 +15,5 @@ export default {
 		on-complete="todo.complete()"
 		on-update="todo.update(task)"></gth-todo>
 	</div>
-	`,
-	controller: TodosCtrl,
-	bindings: {
-		todos: '<'
-	}
+	`
 };
