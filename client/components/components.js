@@ -2,7 +2,6 @@
  * Created by githop on 4/6/16.
  */
 
-
 import angular from 'angular';
 import appRoot from './appRoot/appRoot.cmp';
 import gthTodos from './todos/todos.cmp';

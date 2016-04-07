@@ -17,7 +17,7 @@ export default {
 	controller: TodosCtrl,
 	template: `
 	<h4>Todos list:</h4>
-	<div ng-repeat="todo in $ctrl.todos">
+	<div ng-repeat="todo in $ctrl.todos track by todo.id">
 		<gth-todo
 		todo="todo"
 		on-complete="todo.complete()"

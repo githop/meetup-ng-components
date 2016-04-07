@@ -2,7 +2,7 @@
  * Created by githop on 4/6/16.
  */
 
-export default (TodoModel) => {
+export default ($timeout, TodoModel) => {
 	'ngInject';
 
 	let _todos = [];
@@ -17,14 +17,20 @@ export default (TodoModel) => {
 	};
 
 	function fetch() {
-		console.log('todos fetched', _todos);
 		return _todos;
 	}
 
 	function add(todo) {
 		++_ids;
-		_todos.push(new TodoModel(todo, _ids));
-		return _todos;
+		let randomNum = (1 + (Math.random() * 3)) * 1000;
+		return new Promise(resolve => {
+
+			$timeout(() => {
+				_todos.push(new TodoModel(todo, _ids));
+				resolve(_todos);
+			}, randomNum);
+
+		});
 	}
 
 	function remove(todo) {

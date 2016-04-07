@@ -15,7 +15,7 @@ class appRootCtrl {
     }
 
     addTodo(todo) {
-        this.todos = this.todoSrv.add(todo);
+        this.todoSrv.add(todo).then(todos => this.todos = todos);
         this.$scope.new.todo = '';
     }
 
