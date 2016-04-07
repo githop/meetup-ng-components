@@ -4,12 +4,22 @@
 
 export default (TodoModel) => {
 	'ngInject';
+
+	let _todos = [];
+
+	_todos.push(new TodoModel('first todo for fun'));
+
 	return {
-		fetch: fetch
+		fetch: fetch,
+		add: add
 	};
 
 	function fetch() {
-		return [new TodoModel('use domain objects')];
+		return _todos;
+	}
+
+	function add(todo) {
+		_todos.push(new TodoModel(todo));
 	}
 
 }

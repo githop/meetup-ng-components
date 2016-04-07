@@ -8,5 +8,13 @@ export default () => {
 			this.task = task;
 			this.done = done;
 		}
+
+		complete() {
+			this.done = !this.done;
+		}
+
+		update(task) {
+			this.task = task;
+		}
 	};
 };

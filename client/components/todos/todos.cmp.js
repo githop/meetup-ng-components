@@ -4,13 +4,13 @@
 
 
 class TodosCtrl {
-	constructor() {
-		'ngInect';
+	constructor(todos) {
+		'ngInject';
 
-		//could be an $http request
-		this.$onInit = () => {
-			//console.log('todos?', this.todos);
+		this.$onChanges = (changeObj) => {
+			console.log('changes', changeObj);
 		};
+
 	}
 }
 
@@ -19,7 +19,10 @@ export default {
 	<h4>Todos list:</h4>
 
 	<div ng-repeat="todo in $ctrl.todos">
-		<gth-todo todo="todo"></gth-todo>
+		<gth-todo
+		task="todo.task"
+		completed="todo.done"
+		on-complete="todo.complete()"></gth-todo>
 	</div>
 	`,
 	controller: TodosCtrl,
