@@ -25,7 +25,7 @@ class appRootCtrl {
 
     completed() {
         return this.todos.filter(t => t.done === true).length
-    };
+    }
 }
 
 export default {
@@ -36,6 +36,10 @@ export default {
     {{$ctrl.completed()}} of {{$ctrl.todos.length}} done!
     <input ng-model="new.todo" type="text">
     <button ng-click="$ctrl.addTodo(new.todo)">add</button>
-    <gth-todos todos="$ctrl.todos" on-remove="$ctrl.removeTodo(rm)"></gth-todos>
+    <gth-todos
+        todos="$ctrl.todos"
+        completed="$ctrl.completed()"
+        on-remove="$ctrl.removeTodo(rm)">
+    </gth-todos>
     `
 };

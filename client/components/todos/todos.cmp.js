@@ -3,6 +3,11 @@
  */
 
 class TodosCtrl {
+	constructor() {
+		this.$onChanges = changeObj => {
+			console.log('ch ch changes', changeObj.completed.currentValue);
+		}
+	}
 	remove(todo) {
 		console.log('todo#remove', todo);
 		this.onRemove({rm: todo});
@@ -12,6 +17,7 @@ class TodosCtrl {
 export default {
 	bindings: {
 		todos: '<',
+		completed: '<',
 		onRemove: '&'
 	},
 	controller: TodosCtrl,
