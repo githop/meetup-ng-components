@@ -3,17 +3,13 @@
  */
 
 class appRootCtrl {
-    constructor(todos) {
+    constructor(todosSrv) {
         'ngInject';
         this.welcome = 'Everything Seems to be in order this wonderful eve!';
 
         this.$onInit = () => {
-            this.todos = todos.fetch;
-            this.todoSrv = todos;
-        };
-
-        this.$onChanges = (changeObj) => {
-            console.log('root changes', changeObj);
+            this.todos = todosSrv.fetch;
+            this.todoSrv = todosSrv;
         };
     }
 

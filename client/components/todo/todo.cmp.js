@@ -9,19 +9,25 @@ class TodoCtrl {
 			console.log('changes todo', changeObj);
 		};
 	}
+
+	update(todo) {
+		this.onUpdate({task: todo.task});
+	}
 }
 
 export default {
 	controller: TodoCtrl,
 	template: `
-	<h4>{{$ctrl.task}}</h4>
-	Completed? {{$ctrl.completed}}
+	<h4>{{$ctrl.todo.task}}</h4>
+	Completed? {{$ctrl.todo.done}}
 
-	<button ng-click="$ctrl.onComplete({done: $ctrl.completed})">finish</button>
+	<button ng-click="$ctrl.onComplete()">finish</button>
+	<input ng-model="new.task" type="text"/>
+	<button ng-click="$ctrl.update({task: new.task})">edit</button>
 	`,
 	bindings: {
-		task: '<',
-		completed: '<',
-		onComplete: '&'
+		todo: '<',
+		onComplete: '&',
+		onUpdate: '&'
 	}
 };

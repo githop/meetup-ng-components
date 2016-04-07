@@ -4,13 +4,8 @@
 
 
 class TodosCtrl {
-	constructor(todos) {
+	constructor() {
 		'ngInject';
-
-		this.$onChanges = (changeObj) => {
-			console.log('changes', changeObj);
-		};
-
 	}
 }
 
@@ -20,9 +15,9 @@ export default {
 
 	<div ng-repeat="todo in $ctrl.todos">
 		<gth-todo
-		task="todo.task"
-		completed="todo.done"
-		on-complete="todo.complete()"></gth-todo>
+		todo="todo"
+		on-complete="todo.complete()"
+		on-update="todo.update(task)"></gth-todo>
 	</div>
 	`,
 	controller: TodosCtrl,

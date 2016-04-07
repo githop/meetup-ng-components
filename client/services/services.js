@@ -8,4 +8,4 @@ import angular from 'angular';
 import todosService from './todos.service';
 
 let services = angular.module('app.services', [])
-	.factory('todos', todosService);
+	.factory('todosSrv', todosService);
