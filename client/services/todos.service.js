@@ -28,13 +28,7 @@ export default (TodoModel) => {
 	}
 
 	function remove(todo) {
-		var ret = [];
-		for (let i of _todos) {
-			if (i !== todo) {
-				ret.push(i)
-			}
-		}
-		_todos = ret;
+		_todos = _todos.filter(t => t !== todo);
 		return _todos;
 	}
 

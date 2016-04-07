@@ -19,7 +19,7 @@ class appRootCtrl {
         this.$scope.new.todo = '';
     }
 
-    remove(todo) {
+    removeTodo(todo) {
         this.todos = this.todoSrv.remove(todo.rm);
     }
 
@@ -36,6 +36,6 @@ export default {
     {{$ctrl.completed()}} of {{$ctrl.todos.length}} done!
     <input ng-model="new.todo" type="text">
     <button ng-click="$ctrl.addTodo(new.todo)">add</button>
-    <gth-todos todos="$ctrl.todos" on-remove="$ctrl.remove(rm)"></gth-todos>
+    <gth-todos todos="$ctrl.todos" on-remove="$ctrl.removeTodo(rm)"></gth-todos>
     `
 };
