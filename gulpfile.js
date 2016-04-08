@@ -9,6 +9,7 @@ var gulp = require('gulp'),
     colorsSupported = require('supports-color'),
     path = require('path'),
     serve = require('browser-sync');
+    historyApiFallback = require('connect-history-api-fallback');
 
 
 gulp.task('html', serve.reload);
@@ -26,6 +27,7 @@ gulp.task('serve', ['watch-html'], function() {
             baseDir: 'client'
         },
         middleware: [
+            historyApiFallback(),
             webpackDevMiddleware(wpCompiler, {
                 stats: {
                     colors: colorsSupported,

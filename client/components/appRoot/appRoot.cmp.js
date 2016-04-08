@@ -3,43 +3,21 @@
  */
 
 class appRootCtrl {
-    constructor($scope, todosSrv) {
-        'ngInject';
-        this.welcome = 'Everything Seems to be in order this wonderful eve!';
+	constructor() {
+		'ngInject';
+		this.welcome = 'Everything Seems to be in order this wonderful eve!';
+	}
 
-        this.$onInit = () => {
-            this.todos = todosSrv.fetch();
-            this.todoSrv = todosSrv;
-            this.$scope = $scope;
-        };
-    }
-
-    addTodo(todo) {
-        this.todoSrv.add(todo).then(todos => this.todos = todos);
-        this.$scope.new.todo = '';
-    }
-
-    removeTodo(todo) {
-        this.todos = this.todoSrv.remove(todo.rm);
-    }
-
-    completed() {
-        return this.todos.filter(t => t.done === true).length
-    }
 }
 
 export default {
-    controller: appRootCtrl,
-    template: `
+	controller: appRootCtrl,
+	template: `
     <h3>{{$ctrl.welcome}}</h3>
-
-    {{$ctrl.completed()}} of {{$ctrl.todos.length}} done!
-    <input ng-model="new.todo" type="text">
-    <button ng-click="$ctrl.addTodo(new.todo)">add</button>
-    <gth-todos
-        todos="$ctrl.todos"
-        completed="$ctrl.completed()"
-        on-remove="$ctrl.removeTodo(rm)">
-    </gth-todos>
-    `
+    	<a ng-link="[\'TodoList\']">Todos</a>
+    <ng-outlet></ng-outlet>
+    `,
+	$routeConfig: [
+		{path: '/todoList/...', name: 'TodoList', component: 'gthTodoList'}
+	]
 };

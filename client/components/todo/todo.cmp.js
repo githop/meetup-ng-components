@@ -4,6 +4,13 @@
 
 
 class TodoCtrl {
+	constructor(todosSrv) {
+		this.$routerOnActivate = next => {
+			let id = next.params.id;
+			console.log("id?", id);
+			this.todo = todosSrv.fetch()[--id];
+		};
+	}
 	update(todo) {
 		this.onUpdate({task: todo.task});
 	}
@@ -12,6 +19,7 @@ class TodoCtrl {
 export default {
 	bindings: {
 		todo: '<',
+		$router: '<',
 		onComplete: '&',
 		onUpdate: '&'
 	},
