@@ -4,7 +4,7 @@
 
 
 class TodoCtrl {
-	constructor(todosSrv) {
+	constructor() {
 		this.$onInit = () => {
 			this.todosCtrl.active = true;
 		};
@@ -13,7 +13,7 @@ class TodoCtrl {
 		};
 		this.$routerOnActivate = next => {
 			let id = next.params.id;
-			this.todo = todosSrv.fetch()[--id];
+			this.todo = this.todosCtrl.todos[--id];
 		};
 	}
 }
