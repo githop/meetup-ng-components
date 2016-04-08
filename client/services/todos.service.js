@@ -6,7 +6,7 @@ export default ($timeout, TodoModel) => {
 	'ngInject';
 
 	let _todos = [];
-	let _ids = 0;
+	let _ids = 1;
 
 	_todos.push(new TodoModel('first todo for fun', _ids));
 
@@ -22,7 +22,7 @@ export default ($timeout, TodoModel) => {
 
 	function add(todo) {
 		++_ids;
-		let randomNum = (1 + (Math.random() * 3)) * 1000;
+		let randomNum = (1 + (Math.random() * 2)) * 1000;
 		return new Promise(resolve => {
 
 			$timeout(() => {

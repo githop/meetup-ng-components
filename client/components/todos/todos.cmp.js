@@ -3,32 +3,41 @@
  */
 
 class TodosCtrl {
-	constructor() {
-		this.$onChanges = changeObj => {
-			console.log('ch ch changes', changeObj.completed.currentValue);
-		}
+	constructor($scope, todosSrv) {
+		this.$scope = $scope;
+		this.todoSrv = todosSrv;
+		this.$routerOnActivate = next => {
+			this.todos = todosSrv.fetch();
+		};
 	}
-	remove(todo) {
-		console.log('todo#remove', todo);
-		this.onRemove({rm: todo});
+
+	addTodo(todo) {
+		this.todoSrv.add(todo).then(todos => this.todos = todos);
+		this.$scope.new.todo = '';
+	}
+
+	removeTodo(todo) {
+		this.todos = this.todoSrv.remove(todo.rm);
+	}
+
+	completed() {
+		return this.todos.filter(t => t.done === true).length;
 	}
 }
 
 export default {
-	bindings: {
-		todos: '<',
-		completed: '<',
-		onRemove: '&'
-	},
 	controller: TodosCtrl,
+	$routeConfig: [
+		{path: '/', name: 'Todos', component: 'gthTodoList', useAsDefault: true},
+		{path: '/:id', name: 'Todo', component: 'gthTodo'}
+	],
 	template: `
 	<h4>Todos list:</h4>
-	<div ng-repeat="todo in $ctrl.todos track by todo.id">
-		<gth-todo
-		todo="todo"
-		on-complete="todo.complete()"
-		on-update="todo.update(task)"></gth-todo>
-		<button ng-click="$ctrl.remove({rm: todo})">remove</button>
+	<div ng-hide="$ctrl.active">
+		<input ng-model="new.todo" type="text"/>
+  	<button ng-click="$ctrl.addTodo(new.todo)">add</button>
+  	<gth-todo-list todos="$ctrl.todos"></gth-todo-list>
 	</div>
+	<ng-outlet></ng-outlet>
 	`
 };
