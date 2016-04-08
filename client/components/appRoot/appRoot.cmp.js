@@ -14,10 +14,10 @@ export default {
 	controller: appRootCtrl,
 	template: `
     <h3>{{$ctrl.welcome}}</h3>
-    	<a ng-link="[\'TodoList\']">Todos</a>
+    	<a ng-link="[\'Todos\']">Todos</a>
     <ng-outlet></ng-outlet>
     `,
 	$routeConfig: [
-		{path: '/todoList/...', name: 'TodoList', component: 'gthTodoList'}
+		{path: '/todos/...', name: 'Todos', component: 'gthTodos'}
 	]
 };

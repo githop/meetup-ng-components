@@ -22,7 +22,7 @@ export default ($timeout, TodoModel) => {
 
 	function add(todo) {
 		++_ids;
-		let randomNum = (1 + (Math.random() * 3)) * 1000;
+		let randomNum = (1 + (Math.random() * 2)) * 1000;
 		return new Promise(resolve => {
 
 			$timeout(() => {
