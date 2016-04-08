@@ -12,8 +12,7 @@ export default () => {
 		}
 
 		complete() {
-			console.log('alldone!');
-			this.done = !this.done;
+			this.done = !!this.done;
 		}
 
 		update(task) {
