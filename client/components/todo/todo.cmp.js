@@ -5,17 +5,22 @@
 
 class TodoCtrl {
 	constructor(todosSrv) {
+		this.$onInit = () => {
+			this.todosCtrl.active = true;
+		};
+		this.$onDestroy = () => {
+			this.todosCtrl.active = false;
+		};
 		this.$routerOnActivate = next => {
 			let id = next.params.id;
-			console.log('id?', id);
 			this.todo = todosSrv.fetch()[--id];
 		};
 	}
 }
 
 export default {
-	bindings: {
-		$router: '<'
+	require: {
+		todosCtrl: '^gthTodos'
 	},
 	controller: TodoCtrl,
 	template: `
