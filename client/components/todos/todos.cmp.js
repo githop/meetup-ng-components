@@ -32,7 +32,7 @@ export default {
 		{path: '/:id', name: 'Todo', component: 'gthTodo'}
 	],
 	template: `
-	<h4>Todos list:</h4>
+	<h4>Todos list: <small>{{$ctrl.completed()}} of {{$ctrl.todos.length}} complete</small></h4>
 	<div ng-hide="$ctrl.active">
 		<input ng-model="new.todo" type="text"/>
   	<button ng-click="$ctrl.addTodo(new.todo)">add</button>
