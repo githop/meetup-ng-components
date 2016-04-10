@@ -8,10 +8,12 @@ import gthTodos from './todos/todos.cmp';
 import gthTodo from './todo/todo.cmp';
 import gthTodoList from './todoList/todoList.cmp';
 import gthTodoEditor from './todoEditor/todoEditor.cmp';
+import gthTodoRemove from './removeTodo/removeTodo.cmp';
 
 let components = angular.module('app.components', [])
 	.component('appRoot', appRoot)
 	.component('gthTodoList', gthTodoList)
 	.component('gthTodos', gthTodos)
 	.component('gthTodo', gthTodo)
-	.component('gthTodoEditor', gthTodoEditor);
+	.component('gthTodoEditor', gthTodoEditor)
+	.directive('gthRemoveTodo', gthTodoRemove);

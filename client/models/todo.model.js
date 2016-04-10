@@ -3,7 +3,6 @@
  */
 
 export default () => {
-	'ngInject';
 	return class TodoModel {
 		constructor(task, id, done = false) {
 			this.task = task;

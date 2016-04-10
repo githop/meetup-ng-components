@@ -2,9 +2,7 @@
  * Created by githop on 4/6/16.
  */
 
-export default ($timeout, TodoModel) => {
-	'ngInject';
-
+export default ['$timeout','TodoModel', ($timeout, TodoModel) => {
 	let _todos = [];
 	let _ids = 1;
 
@@ -37,5 +35,4 @@ export default ($timeout, TodoModel) => {
 		_todos = _todos.filter(t => t !== todo);
 		return _todos;
 	}
-
-}
+}];

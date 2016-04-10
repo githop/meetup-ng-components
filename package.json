@@ -21,7 +21,6 @@
     "gulp": "^3.9.1",
     "gulp-util": "^3.0.7",
     "html-webpack-plugin": "^2.15.0",
-    "ng-annotate-loader": "^0.1.0",
     "node-sass": "^3.4.2",
     "sass-loader": "^3.2.0",
     "style-loader": "^0.13.1",

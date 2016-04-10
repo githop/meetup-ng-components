@@ -12,7 +12,7 @@ module.exports = {
             {
                 test: /\.js$/,
                 exclude: [/node_modules/],
-                loader: 'ng-annotate!babel-loader'
+                loader: 'babel-loader'
             },
             {
                 test: /\.css$/,
