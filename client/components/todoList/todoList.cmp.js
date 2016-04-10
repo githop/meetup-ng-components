@@ -17,7 +17,7 @@ class TodoListCtrl {
 	removeTodo(todo) {
 		this.todosCtrl.removeTodo(todo);
 		this.rmTodo = void 0;
-		this.dialog.close();
+		this.closeDialog();
 	}
 
 	goTo(id) {
@@ -31,12 +31,18 @@ class TodoListCtrl {
 	}
 
 	closeDialog() {
-		console.log(this.dialog);
 		if (this.dialog) {
 			this.dialog.close();
 		}
+
+		let revert = document.querySelector('.do-remove');
+		angular.element(revert)
+				.css('transition', 'background-color 0.5s ease')
+				.css('background-color', 'white')
+				.removeClass('do-remove');
 	}
 }
+
 
 export default {
 	require: {
@@ -47,17 +53,16 @@ export default {
 	},
 	controller: TodoListCtrl,
 	template: `
-
 	  <dialog class="mdl-dialog">
-    <h4 class="mdl-dialog__title">Allow data collection?</h4>
+    <h4 class="mdl-dialog__title">Delete Todo?</h4>
     <div class="mdl-dialog__content">
       <p>
-        Allowing us to collect data will let us get you the information you want faster.
+      Are you sure you want to delete: {{$ctrl.rmTodo.task}}?
       </p>
     </div>
     <div class="mdl-dialog__actions">
-      <button type="button" ng-click="$ctrl.removeTodo($ctrl.rmTodo)" class="mdl-button">Agree</button>
-      <button type="button" ng-click="$ctrl.closeDialog()" class="mdl-button close">Disagree</button>
+      <button type="button" ng-click="$ctrl.removeTodo($ctrl.rmTodo)" class="mdl-button">Delete</button>
+      <button type="button" ng-click="$ctrl.closeDialog()" class="mdl-button close">Cancel</button>
     </div>
   </dialog>
 

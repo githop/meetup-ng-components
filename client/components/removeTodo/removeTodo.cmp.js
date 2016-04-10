@@ -28,6 +28,7 @@ export default ['$interval','$timeout', ($interval, $timeout) => {
 				start = ev.timeStamp;
 				$timeout(() => {
 					cssTransitionColor('red', 1.0);
+					elm.addClass('do-remove');
 				}, 250);
 				let showDialog = scope.$watch(() => count, (newVal, oldVal) => {
 					//console.log('watching', newVal);
