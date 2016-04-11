@@ -6,6 +6,7 @@ import './todos.scss';
 class TodosCtrl {
 	constructor($scope, todosSrv) {
 
+		this.$onInit = () => { console.log('TodosCtrl'); };
 		this.$scope = $scope;
 		this.todoSrv = todosSrv;
 		this.lblTxt = this.randomTodo();
@@ -47,7 +48,12 @@ class TodosCtrl {
 	}
 
 	addTodo(todo) {
-		this.todoSrv.add(todo).then(todos => this.todos = todos);
+		this.loading = true;
+		this.todoSrv.add(todo)
+				.then(todos => {
+					this.todos = todos;
+					this.$scope.$apply(() => this.loading = false);
+				});
 		this.$scope.new.todo = ' ';
 		this.lblTxt = this.randomTodo();
 		//so placeholder text returns, removes is-dirty class from input wrapper div
@@ -109,6 +115,8 @@ export default {
   		add
 		</button>
 	</div>
+	<div ng-if="$ctrl.loading"></div>
+	<div id="p2" ng-show="$ctrl.loading" class="gth-progress mdl-progress mdl-js-progress mdl-progress__indeterminate"></div>
 	</div>
 		<h4 class="gth-count mdl-typography--display-1">Todo list: <small>{{$ctrl.completed()}} of {{$ctrl.todos.length}} complete</small></h4>
 	<ng-outlet></ng-outlet>

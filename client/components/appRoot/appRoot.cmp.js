@@ -4,15 +4,16 @@
 
 import './appRoot.scss';
 
-class appRootCtrl {
+class AppRootCtrl {
 	constructor() {
+		this.$onInit = () => {console.log('AppRootCtrl');};
 		this.welcome = 'Hello World!';
 	}
 
 }
 
 export default {
-	controller: appRootCtrl,
+	controller: AppRootCtrl,
 	template: `
 	 <div class="gth-ribbon">
     <h1 class="gth-banner-text gth-ribbon__text mdl-typography--display-4">Rocky Mountain Angular</h1>

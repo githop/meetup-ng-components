@@ -6,6 +6,7 @@ import './todo.scss';
 class TodoCtrl {
 	constructor() {
 		this.$onInit = () => {
+			console.log('TodoCtrl');
 			this.todosCtrl.active = true;
 		};
 		this.$onDestroy = () => {

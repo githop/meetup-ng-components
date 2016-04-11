@@ -6,6 +6,7 @@ import './todoList.scss';
 class TodoListCtrl {
 	constructor() {
 		this.$onInit = () => {
+			console.log('TodosListCtrl');
 			//for editor directive
 			this.todos = this.todosCtrl.todos;
 		};
@@ -21,7 +22,6 @@ class TodoListCtrl {
 	}
 
 	goTo(id) {
-		console.log('id', id);
 		this.$router.navigate(['Todo', {id}]);
 	}
 

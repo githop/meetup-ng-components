@@ -14,6 +14,7 @@ export default ['$interval','$timeout', ($interval, $timeout) => {
 			onRevert: '&'
 		},
 		link: (scope, elm, attrs, ctrl) => {
+			console.log('RemoveTodo Link!');
 			let start, stop;
 			let dialog = document.querySelector('dialog');
 

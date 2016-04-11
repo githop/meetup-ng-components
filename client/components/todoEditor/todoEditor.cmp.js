@@ -6,14 +6,12 @@
 class TodoEditor {
 	constructor($rootRouter, $timeout) {
 		this.$router = $rootRouter;
-		var ctrl = this;
-
+		this.$onInit = () => {console.log('TodoEditorCtrl');};
 		this.$postLink = () => {
 			//for material design lite js
 			let checkBox = document.querySelector('.gth-checkbox');
 			$timeout(() => {
 				componentHandler.upgradeAllRegistered();
-				console.log('checkbox elm', this.todo);
 				if (this.todo.done) {
 					angular.element(checkBox).addClass('is-checked');
 				}
