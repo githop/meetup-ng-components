@@ -50,7 +50,8 @@ class TodosCtrl {
 	}
 
 	addTodo(todo) {
-		if (todo == null) {
+		if (todo == null || todo === '') {
+			console.warn('null input');
 			return;
 		}
 		this.loading = true;
@@ -59,7 +60,7 @@ class TodosCtrl {
 					this.todos = todos;
 					this.$scope.$apply(() => this.loading = false);
 				});
-		this.$scope.new.todo = ' ';
+		this.$scope.new.todo = null;
 		this.lblTxt = this.randomTodo();
 		//so placeholder text returns, removes is-dirty class from input wrapper div
 		// which is added from mdl js for some reason.
@@ -87,11 +88,15 @@ export default {
 		<div class="gth-input">
 			<div class="mdl-textfield mdl-js-textfield">
 			<label class=" mdl-textfield__label" for="sample1">{{$ctrl.lblTxt}}...</label>
-			<input class="gth-input mdl-textfield__input" type="text" ng-model="new.todo" id="sample1">
+			<input class="gth-input mdl-textfield__input"
+				type="text"
+				ng-model="new.todo"
+				id="sample1">
 		</div>
 	</div>
 	<div class="gth-btn">
 	  	<button ng-click="$ctrl.addTodo(new.todo)"
+	  	ng-disabled="$ctrl.loading"
   		class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">
   		add
 		</button>

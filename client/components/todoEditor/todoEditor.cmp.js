@@ -9,7 +9,7 @@ class TodoEditor {
 			this.$router = $rootRouter;
 			console.log('TodoEditorCtrl');
 		};
-		
+
 		this.$postLink = () => {
 			//for material design lite js
 			let checkBox = document.querySelector('.gth-checkbox');
@@ -59,7 +59,6 @@ export default {
 					</div>
 
 				</div>
-
 			<div class="mdl-textfield mdl-js-textfield">
 				<label class=" mdl-textfield__label" for="task">Update Task...</label>
 					<input
