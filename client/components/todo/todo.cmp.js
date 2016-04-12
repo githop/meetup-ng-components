@@ -32,7 +32,7 @@ export default {
 		<div class="gth-todo-content">
 			<h4 class=""><small>task: </small>{{$ctrl.todo.task}}</h4>
 			<gth-todo-editor
-				todo="$ctrl.todo"
+				done="$ctrl.todo.done"
 				on-complete="$ctrl.todo.complete()"
 				on-update="$ctrl.todo.update(task)">
 			</gth-todo-editor>

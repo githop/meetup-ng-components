@@ -10,12 +10,16 @@ class TodoEditor {
 			console.log('TodoEditorCtrl');
 		};
 
+		this.$onChanges = changeObj => {
+			console.log('changes!', changeObj);
+		};
+
 		this.$postLink = () => {
 			//for material design lite js
 			let checkBox = document.querySelector('.gth-checkbox');
 			$timeout(() => {
 				componentHandler.upgradeAllRegistered();
-				if (this.todo.done) {
+				if (this.done) {
 					angular.element(checkBox).addClass('is-checked');
 				}
 			});
@@ -35,7 +39,7 @@ TodoEditor.$inject = ['$rootRouter', '$timeout'];
 export default {
 	controller: TodoEditor,
 	bindings: {
-		todo: '<',
+		done: '<',
 		onComplete: '&',
 		onUpdate: '&'
 	},
@@ -49,7 +53,7 @@ export default {
 							type="checkbox"
 							id="checkbox-1"
 							class="mdl-checkbox__input"
-							ng-model="$ctrl.todo.done"
+							ng-model="$ctrl.done"
 							ng-change="$ctrl.onComplete()">
 					</label>
 					</div>

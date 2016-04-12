@@ -5,19 +5,31 @@
 export default () => {
 	return class TodoModel {
 		constructor(task, id, done = false) {
-			this.task = task;
-			this.id = id;
-			this.done = done;
+			this._task = task;
+			this._id = id;
+			this._done = done;
 		}
 
-		complete() {
-			this.done = !!this.done;
+		get id() {
+			return this._id;
+		}
+
+		get task() {
+			return this._task;
+		}
+
+		get done() {
+			return this._done;
 		}
 
 		update(task) {
 			if (task != null) {
-				this.task = task;
+				this._task = task;
 			}
+		}
+
+		complete() {
+			this._done = !this._done;
 		}
 
 	};
