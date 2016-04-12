@@ -5,8 +5,11 @@
 
 class TodoEditor {
 	constructor($rootRouter, $timeout) {
-		this.$router = $rootRouter;
-		this.$onInit = () => {console.log('TodoEditorCtrl');};
+		this.$onInit = () => {
+			this.$router = $rootRouter;
+			console.log('TodoEditorCtrl');
+		};
+		
 		this.$postLink = () => {
 			//for material design lite js
 			let checkBox = document.querySelector('.gth-checkbox');

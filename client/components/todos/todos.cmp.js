@@ -5,13 +5,15 @@ import './todos.scss';
 
 class TodosCtrl {
 	constructor($scope, todosSrv) {
-
-		this.$onInit = () => { console.log('TodosCtrl'); };
-		this.$scope = $scope;
-		this.todoSrv = todosSrv;
-		this.lblTxt = this.randomTodo();
-		this.$routerOnActivate = next => {
-			this.todos = todosSrv.fetch();
+		this.$onInit = () => {
+			console.log('TodosCtrl');
+			this.$routerOnActivate = next => {
+				console.log('Todos routerOnActive');
+				this.todos = todosSrv.fetch();
+			};
+			this.$scope = $scope;
+			this.todoSrv = todosSrv;
+			this.lblTxt = this.randomTodo();
 		};
 
 		this.$postLink = () => {
@@ -48,6 +50,9 @@ class TodosCtrl {
 	}
 
 	addTodo(todo) {
+		if (todo == null) {
+			return;
+		}
 		this.loading = true;
 		this.todoSrv.add(todo)
 				.then(todos => {
@@ -67,30 +72,6 @@ class TodosCtrl {
 
 	completed() {
 		return this.todos.filter(t => t.done === true).length;
-	}
-
-	leftPad(str, len) {
-		var i = -1;
-		var ch;
-		ch = '¯\\_(ツ)_/¯';
-
-		while (++i < len) {
-			str = ch + str;
-		}
-
-		return str;
-	}
-
-	rightPad(str, len) {
-		var i = -1;
-		var ch;
-		ch = '¯\\_(ツ)_/¯';
-
-		while (++i < len) {
-			str = str + ch;
-		}
-
-		return str;
 	}
 }
 

@@ -7,14 +7,16 @@ class TodoCtrl {
 	constructor() {
 		this.$onInit = () => {
 			console.log('TodoCtrl');
+			this.$routerOnActivate = next => {
+				let id = next.params.id;
+				this.todo = this.todosCtrl.todos[--id];
+			};
+
 			this.todosCtrl.active = true;
 		};
+
 		this.$onDestroy = () => {
 			this.todosCtrl.active = false;
-		};
-		this.$routerOnActivate = next => {
-			let id = next.params.id;
-			this.todo = this.todosCtrl.todos[--id];
 		};
 	}
 }

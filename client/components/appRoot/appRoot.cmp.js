@@ -6,8 +6,10 @@ import './appRoot.scss';
 
 class AppRootCtrl {
 	constructor() {
-		this.$onInit = () => {console.log('AppRootCtrl');};
-		this.welcome = 'Hello World!';
+		this.$onInit = () => {
+			console.log('AppRootCtrl');
+			this.welcome = 'Hello World!';
+		};
 	}
 
 }
